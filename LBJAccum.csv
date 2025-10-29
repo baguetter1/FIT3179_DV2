@@ -1,4 +1,9 @@
 Year,stat,value
+0,TRB,0
+0,AST,0
+0,STL,0
+0,BLK,0
+0,PTS,0
 1,TRB,432
 1,AST,465
 1,STL,130
@@ -109,3 +114,4 @@ Year,stat,value
 22,STL,2345
 22,BLK,1150
 22,PTS,42184
+
