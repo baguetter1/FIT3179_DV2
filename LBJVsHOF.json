@@ -1,0 +1,81 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "LeBron James vs other Hall of Famers",
+    "fontSize": 20,
+    "font": "Arial",
+    "anchor": "start"
+  },
+  "width": "container",
+  "height": "container",
+  "data": {
+        "url" : "https://raw.githubusercontent.com/baguetter1/FIT3179_DV2/refs/heads/main/PtsVsHOF.csv"
+  },
+"selection": {
+"player_highlight": {
+"type": "multi",
+"fields": ["Player"],
+"bind": "legend"
+}
+},
+  "mark": {
+    "type": "line",
+    "point": true
+  },
+  "encoding": {
+    "x": {
+      "field": "Age",
+      "type": "quantitative",
+      "title": "Age",
+      "scale": {
+        "domain": [18, 42]
+      },
+      "axis": {
+        "tickMinStep": 1
+      }
+    },
+    "y": {
+      "field": "PTS",
+      "type": "quantitative",
+      "title": "Points Per Game",
+      "scale": {
+        "domain": [0, 55]
+      }
+    },
+    "color": {
+      "field": "Player",
+      "type": "nominal",
+      "title": "Player",
+      "scale": {
+        "domain": ["LeBron James", "Michael Jordan", "Kobe Bryant", "Kareem Abdul-Jabar", "Magic Johnson", "Shaquille O'Neal", "Larry Bird", "Wilt Chamberlain", "Stephen Curry", "Tim Duncan"],
+        "range": ["#FDB927", "#ce1141", "#552583", "#FDB927", "#552583", "#6e503b", "#5ad16b", "#006bb6", "#1d428a", "#C0C0C0"]
+      },
+      "legend": {
+        "orient": "top-right"
+      }
+    },
+    "opacity": {
+    "condition": {"selection": "player_highlight", "value": 0.8},
+    "value": 0.1
+    },
+    "strokeWidth": {
+      "condition": {
+        "test": "datum.Player === 'LeBron James'",
+        "value": 10
+      },
+      "value": 2   
+    },
+    "strokeDash": {
+      "condition": {
+        "test": "datum.Player === 'LeBron James'",
+        "value": [8, 4] 
+      },
+      "value": []
+    },
+    "tooltip": [
+      {"field": "Player", "type": "nominal", "title": "Player"},
+      {"field": "Age", "type": "quantitative", "title": "Age"},
+      {"field": "PTS", "type": "quantitative", "title": "PPG", "format": ".1f"}
+    ]
+  }
+}

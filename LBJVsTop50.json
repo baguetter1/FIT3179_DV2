@@ -1,0 +1,253 @@
+{
+"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+"width": "container",
+"height": "container",
+"title": {
+  "text": "LeBron James vs NBA 2024-2025 Season Top 50 Scorers",
+      "fontSize": 20,
+    "font": "Arial",
+    "anchor": "start"
+},
+"data": {
+"url": "https://raw.githubusercontent.com/baguetter1/FIT3179_DV2/refs/heads/main/2025PtsAgeSal.csv"
+},
+  "params": [
+    {
+      "name": "Player_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "LeBron James",
+          "Shai Gilgeous-Alexander",
+          "Giannis Antetokounmpo",
+          "Nikola Jokić",
+          "Anthony Edwards",
+          "Jayson Tatum",
+          "Kevin Durant",
+          "Cade Cunningham",
+          "Jalen Brunson",
+          "Devin Booker",
+          "Damian Lillard",
+          "Stephen Curry",
+          "Karl-Anthony Towns",
+          "Trae Young",
+          "Franz Wagner",
+          "Donovan Mitchell",
+          "Tyler Herro",
+          "De'Aaron Fox",
+          "Zach LaVine",
+          "James Harden",
+          "DeMar DeRozan",
+          "Jaylen Brown",
+          "Jaren Jackson Jr.",
+          "Norman Powell",
+          "Jalen Williams",
+          "Jamal Murray",
+          "RJ Barrett",
+          "Jalen Green",
+          "Darius Garland",
+          "Jordan Poole",
+          "Coby White",
+          "Miles Bridges",
+          "Pascal Siakam",
+          "Austin Reaves",
+          "Scottie Barnes",
+          "Anfernee Simons",
+          "Desmond Bane",
+          "Domantas Sabonis",
+          "Alperen Şengün",
+          "Julius Randle",
+          "Tyrese Haliburton",
+          "Shaedon Sharpe",
+          "Evan Mobley",
+          "Nikola Vučević",
+          "Collin Sexton",
+          "Michael Porter Jr.",
+          "Bam Adebayo",
+          "OG Anunoby",
+          "Andrew Wiggins",
+          "Mikal Bridges"
+        ],
+        "labels": [
+          "Show All",
+          "LeBron James",
+          "Shai Gilgeous-Alexander",
+          "Giannis Antetokounmpo",
+          "Nikola Jokić",
+          "Anthony Edwards",
+          "Jayson Tatum",
+          "Kevin Durant",
+          "Cade Cunningham",
+          "Jalen Brunson",
+          "Devin Booker",
+          "Damian Lillard",
+          "Stephen Curry",
+          "Karl-Anthony Towns",
+          "Trae Young",
+          "Franz Wagner",
+          "Donovan Mitchell",
+          "Tyler Herro",
+          "De'Aaron Fox",
+          "Zach LaVine",
+          "James Harden",
+          "DeMar DeRozan",
+          "Jaylen Brown",
+          "Jaren Jackson Jr.",
+          "Norman Powell",
+          "Jalen Williams",
+          "Jamal Murray",
+          "RJ Barrett",
+          "Jalen Green",
+          "Darius Garland",
+          "Jordan Poole",
+          "Coby White",
+          "Miles Bridges",
+          "Pascal Siakam",
+          "Austin Reaves",
+          "Scottie Barnes",
+          "Anfernee Simons",
+          "Desmond Bane",
+          "Domantas Sabonis",
+          "Alperen Şengün",
+          "Julius Randle",
+          "Tyrese Haliburton",
+          "Shaedon Sharpe",
+          "Evan Mobley",
+          "Nikola Vučević",
+          "Collin Sexton",
+          "Michael Porter Jr.",
+          "Bam Adebayo",
+          "OG Anunoby",
+          "Andrew Wiggins",
+          "Mikal Bridges"
+        ],
+        "name": "Player Selection "
+      }
+    },
+    {
+    "name": "Salary_Above",
+    "value": 0,
+    "bind": {
+    "input": "range",
+    "min": 0,
+    "max": 55,
+    "step": 1,
+    "name": "Minimum Salary (Millions $): "
+    }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "Player_selection == null || datum.Player == Player_selection"
+    },
+    {
+      "filter": "datum.SAL > Salary_Above"
+    }
+  ],
+"mark": "circle",
+"encoding": {
+"x": {
+"field": "Age",
+"type": "quantitative",
+"title": "Age",
+"scale": {
+  "domain": [18,42]
+}    
+},
+"y": {
+"field": "PTS",
+"type": "quantitative",
+"title": "Points per Game",
+"scale": {
+  "domain": [15,35]
+}   
+},
+"color": {
+"field": "Player",
+"type": "nominal",
+"legend": null,
+"scale": {
+"domain": [
+          "Shai Gilgeous-Alexander",
+          "Giannis Antetokounmpo",
+          "Nikola Jokić",
+          "Anthony Edwards",
+          "Jayson Tatum",
+          "Kevin Durant",
+          "Cade Cunningham",
+          "Jalen Brunson",
+          "Devin Booker",
+          "Damian Lillard",
+          "Stephen Curry",
+          "Karl-Anthony Towns",
+          "LeBron James",
+          "Trae Young",
+          "Franz Wagner",
+          "Donovan Mitchell",
+          "Tyler Herro",
+          "De'Aaron Fox",
+          "Zach LaVine",
+          "James Harden",
+          "DeMar DeRozan",
+          "Jaylen Brown",
+          "Jaren Jackson Jr.",
+          "Norman Powell",
+          "Jalen Williams",
+          "Jamal Murray",
+          "RJ Barrett",
+          "Jalen Green",
+          "Darius Garland",
+          "Jordan Poole",
+          "Coby White",
+          "Miles Bridges",
+          "Pascal Siakam",
+          "Austin Reaves",
+          "Scottie Barnes",
+          "Anfernee Simons",
+          "Desmond Bane",
+          "Domantas Sabonis",
+          "Alperen Şengün",
+          "Julius Randle",
+          "Tyrese Haliburton",
+          "Shaedon Sharpe",
+          "Evan Mobley",
+          "Nikola Vučević",
+          "Collin Sexton",
+          "Michael Porter Jr.",
+          "Bam Adebayo",
+          "OG Anunoby",
+          "Andrew Wiggins",
+          "Mikal Bridges"
+],
+"range": [
+  "#7649E6", "#7649E6", "#7649E6", "#7649E6", "#7649E6", "#7649E6", "#7649E6", "#7649E6", "#7649E6", "#7649E6",
+  "#8860EB", "#8860EB", "#FDB927", "#8860EB", "#8860EB", "#8860EB", "#8860EB", "#8860EB", "#8860EB", "#8860EB",
+  "#9975F0", "#9975F0", "#9975F0", "#9975F0", "#9975F0", "#9975F0", "#9975F0", "#9975F0", "#9975F0", "#9975F0",
+  "#AC8FF2", "#AC8FF2", "#AC8FF2", "#AC8FF2", "#AC8FF2", "#AC8FF2", "#AC8FF2", "#AC8FF2", "#AC8FF2", "#AC8FF2",
+  "#C4B0F5", "#C4B0F5", "#C4B0F5", "#C4B0F5", "#C4B0F5", "#C4B0F5", "#C4B0F5", "#C4B0F5", "#C4B0F5", "#C4B0F5"
+]
+}
+},
+"opacity": {
+"value": 0.6
+},
+"size": {
+"field": "SAL",
+"type": "quantitative",
+"title": "Salary in Millions $",
+"scale": {
+"type": "threshold",
+"domain": [10, 20, 30, 40, 50],
+"range": [100, 200, 400, 800, 1200, 1500]
+}
+},
+"tooltip": [
+{"field": "Player", "type": "nominal"},
+{"field": "Age", "type": "quantitative", "format": ","},
+{"field": "PTS", "type": "quantitative", "format": ",", "title": "Points per Game"},
+{"field": "SAL", "type": "quantitative", "format": "$,.2f", "title": "Salary in Millions"}
+]
+}
+
+}

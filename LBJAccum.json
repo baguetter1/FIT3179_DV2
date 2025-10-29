@@ -1,0 +1,134 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "title": {
+    "text": "LeBron James Cumulative Career Statistics",
+    "fontSize": 20,
+    "font": "Arial",
+    "anchor": "start"
+  },
+  "vconcat": [
+    {
+  "width": "container",
+  "height": 250,
+    "autosize": {
+    "type": "fit",
+    "contains": "padding",
+      "resize": true
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/baguetter1/FIT3179_DV2/refs/heads/main/LBJAccum.csv"
+  },
+  "transform": [
+    {
+      "calculate": "datum.stat === 'PTS' ? 1 : datum.stat === 'TRB' ? 2 : datum.stat === 'AST' ? 3 : datum.stat === 'STL' ? 4 : 5",
+      "as": "stackOrder"
+    }
+  ],
+  "mark": {
+    "type": "area",
+    "interpolate": "monotone"
+  },
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "quantitative",
+      "title": "",
+      "axis": {
+        "labelAngle": -45
+      },
+      "scale": {"domain": {"param": "brush"}}
+    },
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "Cumulative Total",
+      "stack": "zero"
+    },
+    "color": {
+      "field": "stat",
+      "type": "nominal",
+      "title": "Statistic",
+      "scale": {
+        "domain": ["PTS", "TRB", "AST", "STL", "BLK"],
+        "range": ["#FFDF00", "#EDD10E", "#DBC316", "#C9B41C", "#BAA720"]      
+        }
+    },
+    "order": {
+      "field": "stackOrder",
+      "type": "quantitative",
+      "sort": "ascending"
+    },
+    "tooltip": [
+      {"field": "Year", "type": "quantitative", "title": "Year"},
+      {"field": "stat", "type": "nominal", "title": "Statistic"},
+      {"field": "value", "type": "quantitative", "title": "Cumulative Total", "format": ","}
+    ]
+  }
+    },
+    {
+  "width": "container",
+  "height": 50,
+    "autosize": {
+    "type": "fit",
+    "contains": "padding",
+      "resize": true
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/baguetter1/FIT3179_DV2/refs/heads/main/LBJAccum.csv"
+  },
+  "transform": [
+    {
+      "calculate": "datum.stat === 'PTS' ? 1 : datum.stat === 'TRB' ? 2 : datum.stat === 'AST' ? 3 : datum.stat === 'STL' ? 4 : 5",
+      "as": "stackOrder"
+    }
+  ],
+  "mark": {
+    "type": "area",
+    "interpolate": "monotone"
+  },
+  "params": [
+{"name": "brush", "select": {"type": "interval",
+"encodings": ["x"]}}
+],
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "quantitative",
+      "title": "Year",
+      "axis": {
+        "labelAngle": -45
+      }
+    },
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "Cumulative Total",
+      "stack": "zero"
+    },
+    "color": {
+      "field": "stat",
+      "type": "nominal",
+      "title": "Statistic",
+      "scale": {
+        "domain": ["PTS", "TRB", "AST", "STL", "BLK"],
+        "range": ["#FFDF00", "#EDD10E", "#DBC316", "#C9B41C", "#BAA720"]      
+        }
+    },
+    "order": {
+      "field": "stackOrder",
+      "type": "quantitative",
+      "sort": "ascending"
+    },
+    "tooltip": [
+      {"field": "Year", "type": "quantitative", "title": "Year"},
+      {"field": "stat", "type": "nominal", "title": "Statistic"},
+      {"field": "value", "type": "quantitative", "title": "Cumulative Total", "format": ","}
+    ]
+  }
+    }
+  ]
+}

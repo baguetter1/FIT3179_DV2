@@ -1,0 +1,63 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "title": {
+    "text": "LeBron James Career Stats (Points, Rebounds, Assists)",
+    "fontSize": 20,
+    "font": "Arial",
+    "anchor": "start"
+  },
+  "width": "container",
+  "height": "container",
+  "data": {
+    "url": "https://raw.githubusercontent.com/baguetter1/FIT3179_DV2/refs/heads/main/LBJAvg.csv"
+  },
+  "transform": [
+    {
+      "calculate": "datum.stat === 'PTS' ? 1 : datum.stat === 'TRB' ? 2 : datum.stat === 'AST' ? 3 : datum.stat === 'STL' ? 4 : 5",
+      "as": "stackOrder"
+    }
+  ],
+  "mark": {
+    "type": "bar"
+  },
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "quantitative",
+      "title": "Year",
+      "axis": {
+        "labelAngle": -45
+      },
+      "scale": {
+        "domain": [0, 22]
+      }    },
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "Cumulative Total"
+    },
+    "color": {
+      "field": "stat",
+      "type": "nominal",
+      "title": "Statistic",
+      "scale": {
+        "domain": ["PTS", "TRB", "AST", "STL", "BLK"],
+        "range": ["#552583", "#6c40e1", "#FF6B35", "#FDB927", "#4b3b2a"]
+      }
+    },
+    "order": {
+      "field": "stackOrder",
+      "type": "quantitative",
+      "sort": "ascending"
+    },
+    "tooltip": [
+      {"field": "Year", "type": "ordinal", "title": "Year"},
+      {"field": "stat", "type": "nominal", "title": "Statistic"},
+      {"field": "value", "type": "quantitative", "title": "Cumulative Total"}
+    ]
+  }
+}

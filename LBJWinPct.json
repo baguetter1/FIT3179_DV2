@@ -1,0 +1,83 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+  "text": "Lebron James' Win Percentage against each NBA Team",
+      "fontSize": 20,
+    "font": "Arial",
+    "anchor": "start"
+},
+  "width": "container",
+  "height": "container",
+  "projection": {
+    "type": "mercator",
+    "center": [-97, 40], 
+    "scale": 800
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/vega/vega-datasets/main/data/us-10m.json",
+        "format": {"type": "topojson", "feature": "states"}
+      },
+      "mark": {"type": "geoshape", "fill": "#eee", "stroke": "#999"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/wisdomtheif/Canadian_GeoJSON/refs/heads/master/canada_provinces.geojson"
+              },
+      "mark": {"type": "geoshape", "fill": "#eee", "stroke": "#999"}
+    },
+    {
+      "data": {
+        "values": [
+          {"team":"Atlanta Hawks","lon":-84.3963,"lat":33.7573,"win_pct":71.2},
+          {"team":"Boston Celtics","lon":-71.0621,"lat":42.3662,"win_pct":55.7},
+          {"team":"Brooklyn Nets","lon":-73.9792,"lat":40.6826,"win_pct":62.9},
+          {"team":"Charlotte Hornets","lon":-80.8392,"lat":35.2251,"win_pct":86.2},
+          {"team":"Chicago Bulls","lon":-87.6742,"lat":41.8819,"win_pct":53.0},
+          {"team":"Cleveland Cavaliers","lon":-81.6758,"lat":41.4965,"win_pct":39.2},
+          {"team":"Dallas Mavericks","lon":-96.8089,"lat":32.7906,"win_pct":60.9},
+          {"team":"Denver Nuggets","lon":-105.0077,"lat":39.7406,"win_pct":46.7},
+          {"team":"Detroit Pistons","lon":-83.0458,"lat":42.341,"win_pct":64.6},
+          {"team":"Golden State Warriors","lon":-122.3822,"lat":37.768,"win_pct":55.6},
+          {"team":"Houston Rockets","lon":-95.3599,"lat":29.7588,"win_pct":53.2},
+          {"team":"Indiana Pacers","lon":-86.1552,"lat":39.7683,"win_pct":62.7},
+          {"team":"LA Clippers","lon":-118.2673,"lat":34.043,"win_pct":59.2},
+          {"team":"LA Lakers","lon":-118.2673,"lat":34.043,"win_pct":73.3},
+          {"team":"Memphis Grizzlies","lon":-90.0505,"lat":35.1384,"win_pct":66.7},
+          {"team":"Miami Heat","lon":-80.1918,"lat":25.7617,"win_pct":53.2},
+          {"team":"Milwaukee Bucks","lon":-87.9164,"lat":43.0418,"win_pct":70.5},
+          {"team":"Minnesota Timberwolves","lon":-93.265,"lat":44.9778,"win_pct":73.3},
+          {"team":"New Orleans Pelicans","lon":-90.0715,"lat":29.9499,"win_pct":67.9},
+          {"team":"New York Knicks","lon":-73.9855,"lat":40.7505,"win_pct":72.1},
+          {"team":"Oklahoma City Thunder","lon":-97.5164,"lat":35.4631,"win_pct":66.7},
+          {"team":"Orlando Magic","lon":-81.3792,"lat":28.5383,"win_pct":64.1},
+          {"team":"Philadelphia 76ers","lon":-75.1719,"lat":39.912,"win_pct":69.0},
+          {"team":"Phoenix Suns","lon":-112.074,"lat":33.4484,"win_pct":62.5},
+          {"team":"Portland Trail Blazers","lon":-122.6765,"lat":45.5231,"win_pct":68.2},
+          {"team":"Sacramento Kings","lon":-121.4944,"lat":38.5816,"win_pct":62.2},
+          {"team":"San Antonio Spurs","lon":-98.4936,"lat":29.4241,"win_pct":54.3},
+          {"team":"Toronto Raptors","lon":-79.3832,"lat":43.6532,"win_pct":74.2},
+          {"team":"Utah Jazz","lon":-111.891,"lat":40.7608,"win_pct":65.9},
+          {"team":"Washington Wizards","lon":-77.0209,"lat":38.8983,"win_pct":65.0}
+        ]
+      },
+      "mark": {"type": "point", "filled": true, "stroke": "white", "strokeWidth": 1},
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "size": {"field": "win_pct", "type": "quantitative", "legend":null,"scale": { "domain":[0,100],                                                                      
+                                                                        "range": [20, 2000] 
+                                                                      }},
+        "color": {"field": "win_pct","type":"quantitative",  "scale": {
+                                                                        "domain": [30, 80], 
+                                                                        "range": ["#C4B0F5", "#7649E6"] 
+                                                                      }},
+        "tooltip":[
+          {"field":"team","title":"Team"},
+          {"field":"win_pct","title":"Win %"}
+        ]
+      }
+    }
+  ]
+}

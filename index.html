@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LeBron James, the Greatest of All Time</title>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #F8EC62;
+    }
+
+    header, footer {
+      background-color: #8860EB;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .passage {
+      max-width: 1400px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: #8860EB;
+      color: white;
+      font-size: 18px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .chart-container {
+      max-width: 1400px;
+      margin: 30px auto;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .side-by-side {
+      display: flex;
+      gap: 200px;
+      flex-wrap: wrap;
+    }
+
+    .side-by-side > div {
+      flex: 1 1 5%;
+      min-width: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>LeBron James, the Greatest of All Time</h1>
+</header>
+
+<div class="chart-container side-by-side">
+  <div style="flex: 3; min-width: 300px; padding: 2px;">
+    <img src="LBJ.jpg" alt="LeBron James" style="width:100%; height:auto; border-radius:8px;">
+  </div>
+  <div style="flex: 1; min-width: 300px; padding: 20px; background-color: #8860EB; color: white; border-radius: 8px; font-size: 18px">
+    <p>
+      Born and raised in Akron, Ohio, LeBron James is regarded as one of the best basketball players to bless the planet. With: 
+    <ul>
+        <li>4 NBA championships</li>
+        <li>4 MVPs</li>
+        <li>4 Final MVPs</li>
+        <li>6 All Defensive Teams</li>
+        <li>21 All NBA</li>
+        <li>3 Olympic Gold Medals</li>
+    </ul>
+    Calling LeBron James the Greatest of All Time (G.O.A.T) would be an understatement. From The Decision, to winning in Miami and coming back to Clevaland for another, to the 2016 3-1 comeback, Lakers Bubble Ring, and countless Olympic Medals, only time can slow him down.
+    Despite this, at the age of 40, he stands alone as the single most accomplished and longest tenured basketball player.
+    </p>
+  </div>
+
+</div>
+
+<div class="chart-container">
+  <div id="WinPct" style="width:100%; height:600px;"></div>
+</div>
+
+<div class="passage">
+  <p>Over his decorated career, LeBron has faced every team countless times, with most being victorious. He seems to have a certain
+    aura to him, with some even giving him nicknames due to his consistent dominance over certain teams: LeBronto is one to signal his 
+    triumphs over the Toronto Raptors
+  </p>
+</div>
+
+<div class="side-by-side chart-container">
+  <div style="flex:7; min-width:300px;">
+    <div id="accumChart" style="width:100%; height:500px;"></div>
+  </div>
+  <div style="flex:4; min-width:300px;">
+    <div id="avgChart" style="width:100%; height:500px;"></div>
+  </div>
+</div>
+
+<div class="passage">
+  <p>Being the oldest current player in the NBA has not stopped LeBron, with consistency being a large component of his legacy.
+    He has not dropped in any major statistical category over his 22 years of playing in the league, and becoming the All-Time Points
+    Leader in February 7th, 2023, overtaking Kareem Abdul-Jabbar with 38387 points
+  </p>
+</div>
+
+<div class="chart-container">
+  <div id="prevTop" style="width:100%; height:600px;"></div>
+</div>
+
+<div class="chart-container">
+  <div id="HOF" style="width:100%; height:600px;"></div>
+</div>
+
+<div class="passage">
+  <p>While some compare him to other players to diminish his reputation as the Greatest of All Time, certain things are just not comparable.
+    LeBron, while easily being the oldest in the league, still manages to fit himself into the top 15 points scorer in the previous season. Furthermore,
+    unlike greats of the past, his decline, or lack there of, is completely unheard of compared to other Hall of Famers like Michael Jorden,
+    Larry Bird, and Kareem Abdul-Jabbar
+  </p>
+</div>
+
+<footer>
+  <p>Name: Alexander Wang | Date: 29/10/2025 | Sources: basketball-reference.com | Image: https://www.mensfitness.com/</p>
+</footer>
+
+<script>
+  vegaEmbed('#WinPct', 'LBJWinPct.json', {actions:false});
+  vegaEmbed('#avgChart', 'LBJAvg.json', {actions:false});
+  vegaEmbed('#accumChart', 'LBJAccum.json', {actions:false});
+  vegaEmbed('#prevTop', 'LBJVsTop50.json', {actions:false});
+  vegaEmbed('#HOF', 'LBJVsHOF.json', {actions:false});
+</script>
+
+</body>
+</html>
